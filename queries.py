@@ -1,0 +1,1 @@
+# SQL queries for user operations used in funcs.py
