@@ -1,4 +1,8 @@
 from flask import Flask
+from config import Config
+from extensions import mealplan, login_manager
+from routes import auth
+
 app = Flask(__name__)
 
 #login
@@ -59,7 +63,7 @@ def request_loader(request):
     return user
 
 with app.app_context():
-    db.create_all()
+    mealplan.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True)
