@@ -1,6 +1,6 @@
 from flask import Flask
 from config import Config
-from extensions import mealplan, login_manager
+from extensions import db, login_manager
 
 
 def create_app():
@@ -19,7 +19,7 @@ def hello():
     return 'Hello World!'
 
 with app.app_context():
-    mealplan.create_all()
+    db.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True)
