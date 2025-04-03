@@ -2,7 +2,17 @@ from flask import Flask
 from config import Config
 from extensions import mealplan, login_manager
 
-app = Flask(__name__)
+
+def create_app():
+
+    app = Flask(__name__)
+
+    from . import routes
+    app.register_blueprint(routes.bp)
+    
+    return app
+
+app = create_app()
 
 @app.route('/')
 def hello():
