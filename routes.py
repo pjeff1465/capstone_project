@@ -5,10 +5,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from extensions import db, login_manager
 from models import User 
 
-import flask_login
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
-
+auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
