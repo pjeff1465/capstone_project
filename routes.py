@@ -1,12 +1,18 @@
 #login
+from flask import Blueprint, render_template, request, redirect, url_for
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, logout_user, login_required, current_user
+from extensions import db, login_manager
+from models import User 
+
 import flask_login
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
-    if Flask.request.method == 'GET':
+    if request.method == 'GET':
         return '''
                <form action='login' method='POST'>
                 <input type='text' name='email' id='email' placeholder='email'/>
