@@ -8,6 +8,10 @@ from flask import Flask
 
 auth = Blueprint('auth', __name__)
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
