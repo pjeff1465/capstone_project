@@ -1,0 +1,1 @@
+-- Define select queries for all tables

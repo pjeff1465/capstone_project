@@ -1,0 +1,1 @@
+-- Define insert queries for all tables
