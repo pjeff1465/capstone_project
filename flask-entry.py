@@ -4,6 +4,10 @@ from extensions import mealplan, login_manager
 
 app = Flask(__name__)
 
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
 with app.app_context():
     mealplan.create_all()
 

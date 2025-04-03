@@ -3,9 +3,6 @@ import flask_login
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-@app.route('/')
-def hello():
-    return 'Hello World!'
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
