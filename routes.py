@@ -1,4 +1,3 @@
-#login
 from flask import Blueprint, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
@@ -8,6 +7,20 @@ from models import User
 from flask import Flask 
 
 auth = Blueprint('auth', __name__)
+
+@auth.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        hashed_password = generate_password_hash(password)
+        new_user = User(email=email, password=hashed_password)
+
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('auth.login'))
+    return render_template('signup.html')
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -32,10 +45,7 @@ def login():
 @auth.route('/logout')
 def logout():
     logout_user()
-    return 'Logged out'
-
-#class User(flask_login.UserMixin):
-#    pass
+    return redirect(url_for('auth.login'))
 
 @login_manager.user_loader
 def user_loader(email):
@@ -56,3 +66,9 @@ def request_loader(request):
     user = User()
     user.id = email
     return user
+
+@auth.route('/dashboard')
+@login_required
+def dashboard():
+    return f"Welcome, {current_user.email}"
+
