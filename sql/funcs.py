@@ -3,7 +3,7 @@
 import sqlite3
 import os
 from datetime import datetime
-from queries import *
+from sql.queries import *
 
 ## Connect to database ##
 def connect_to_db(db_name = "mealplan.db"):

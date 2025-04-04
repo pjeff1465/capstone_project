@@ -1,6 +1,6 @@
 # This file will include all use cases for funcs defined in funcs.py
 
-from funcs import *
+from sql.funcs import *
 
 def main():
     db_name = "mealplan.db"

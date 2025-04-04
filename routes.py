@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from extensions import db, login_manager
 from models import User 
 
-from flask import Flask 
+ 
 
 auth = Blueprint('auth', __name__)
 
@@ -37,20 +37,26 @@ def login():
                </form>
                '''
 
-    email = Flask.request.form['email']
-    if email in login_user and Flask.request.form['password'] == login_user[email]['password']:
-        user = User()
-        user.id = email
-        login_user(user)
-        return Flask.redirect(Flask.url_for('protected'))
+    email = request.form['email']
+    password = request.form['password']
 
-    return 'Bad login'
+    # fetch user from database
+    user = User.query.filter_by(email=email).first()
+
+    # check if passwrod correct by referencing db
+    if user and check_password_hash(user.password, password): 
+        login_user(user)
+        return redirect(url_for('auth.dashboard'))
+
+    return 'Invalid email or password!'
 
 @auth.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
+'''
 @login_manager.user_loader
 def user_loader(email):
     if email not in login_user:
@@ -70,6 +76,7 @@ def request_loader(request):
     user = User()
     user.id = email
     return user
+'''
 
 @auth.route('/dashboard')
 @login_required

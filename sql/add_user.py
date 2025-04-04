@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from funcs import *
+from sql.funcs import *
 
 cnx, cursor = connect_to_db("mealplan.db")
 
