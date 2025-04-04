@@ -23,9 +23,6 @@ app = create_app()
 @app.route('/')
 def home():
     return redirect(url_for('auth.login'))
-#def hello():
-#    return 'Hello World!'
-
 
 if __name__ == '__main__':
     app.run(debug=True)
