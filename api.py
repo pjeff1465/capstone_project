@@ -9,8 +9,8 @@ def get_request(url:str, params:dict, headers:dict) -> dict:
 
     Params: 
         url: string with full url and endpoint 
-        params: dict with apikey and any other values for api request 
-        BOTH VALUES SHOULD BE DEFINED IN CONFIG.INI 
+        params: dict with application id and key and any other values for api request 
+        headers: dict with 'Edamam-Account-User' to define account user name
     Returns: raw json response
     """
     try:
@@ -27,8 +27,44 @@ def get_request(url:str, params:dict, headers:dict) -> dict:
         print(f"Unexpected error while attempting to make get request: {e}")
         return None
     
+def parse_data(data: dict) -> list[dict]:
+    """
+    Parses api json response data to extract desired fields
 
-def main():
+    Note: Only handles first page of response. Each api request returns 1 page of generated results, with 20 hits per page. To access next page link can be found at response -> _links -> next -> href
+    """
+
+    #flatten json by 1 level to remove need for deeper key lookups
+    data_recipe_list = [item["recipe"] for item in data["hits"]]
+
+    #extract list of recipes and desired fields from response
+    #Note: api provides comprehensive list of all total nutrients, only the main macronutrients + sugar are extracted here
+    recipes = [
+        {
+            "label": item["label"],
+            "image": item["image"],
+            "servings": item["yield"],
+            "dietLabels": item["dietLabels"],
+            "healthLabels": item["healthLabels"],
+            "ingredientLines": item["ingredientLines"],
+            "calories": item["calories"],
+            "cuisineType": item["cuisineType"],
+            "mealType": item["mealType"],
+            "FAT": item["totalNutrients"]["FAT"],
+            "PROTIEN": item["totalNutrients"]["PROCNT"],
+            "CARBS": item["totalNutrients"]["CHOCDF"],
+            "FIBER": item["totalNutrients"]["FIBTG"],
+            "SUGAR": item["totalNutrients"]["SUGAR"]
+        }
+        for item in data_recipe_list   
+    ]
+    return recipes
+
+
+def get_recipes() -> list[dict]:
+    """
+    Returns: list of dictionaries, each dict containing data from 1 recipe, including label(recipe name), image, etc. Should have length  <=20, based on search query/filters provided to api request
+    """
     load_dotenv()
     base_url = os.environ['API_BASE_URL']
     endpoint = os.environ['API_ENDPOINT']
@@ -42,7 +78,5 @@ def main():
     parameters = {"type": "public", "q":"chicken", "app_id":api_id, "app_key":api_key}
 
     response = get_request(full_url, parameters, headers)
-    print(response)
-
-if __name__ == '__main__':
-    main()
+    recipes = parse_data(response)
+    return recipes
