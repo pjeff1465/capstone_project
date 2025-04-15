@@ -3,10 +3,12 @@ from config import Config
 from extensions import db, login_manager
 from flask_sqlalchemy import SQLAlchemy 
 from flask_login import current_user
+import os
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+    app.secret_key = os.urandom(24) #on startup, assign random key (used to secure session data). this will reset any persisting sessions
     
     db.init_app(app)
     login_manager.init_app(app)
