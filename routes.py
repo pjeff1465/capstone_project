@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
+
 from extensions import db, login_manager
 from models import User 
-
- 
+from api import get_recipes
 
 auth = Blueprint('auth', __name__)
 
@@ -65,5 +65,17 @@ def logout():
 @auth.route('/dashboard')
 @login_required
 def dashboard():
-    return f"Welcome, {current_user.email}"
+    return render_template('dashboard.html')
 
+@auth.route('/recipe_search')
+@login_required
+def recipe_search():
+    return render_template('recipe_search.html')
+
+@auth.route('/data', methods=['POST'])
+@login_required
+def call_api():
+    query = request.form.get('query') # attempts to pull search query field from html form where route is called. will need to add more lines for further filters
+    recipe_list = get_recipes(search_query=query) #this function call, and the function itself will need to be updated to handle additional filters
+
+    return render_template('results_list.html', recipes = recipe_list)
