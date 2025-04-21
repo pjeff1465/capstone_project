@@ -67,11 +67,6 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
-@auth.route('/recipe_search')
-@login_required
-def recipe_search():
-    return render_template('recipe_search.html')
-
 @auth.route('/data', methods=['POST'])
 @login_required
 def call_api():
