@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,88 @@
     <link rel="stylesheet" href="..\static\css\main.css">
     <title>Sign Up</title>
     <style>
+        /* signup CSS */
+        .header {
+            background-color: #2e5c2e;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-radius: 30px;
+            position: absolute;
+            top: 70px;  /* Keeps the vertical positioning as it was */
+            left: 50%;  /* Centers the header horizontally */
+            transform: translateX(-50%);  /* Adjusts the header by half of its width for perfect centering */
+            width: 60%;  /* You can adjust this width as needed */
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        form input {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            background-color: #fff3cd;
+            color: #856404;
+            text-align: center;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .link a {
+            color: #ed5bc6;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
