@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
+import uuid
 
 from extensions import db, login_manager
 from models import User 
@@ -67,10 +68,34 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
+#globaly store cache of recipes in server-side memory
+recipes_cache = {}
+
 @auth.route('/data', methods=['POST'])
 @login_required
 def call_api():
     query = request.form.get('query') # attempts to pull search query field from html form where route is called. will need to add more lines for further filters
     recipe_list = get_recipes(search_query=query) #this function call, and the function itself will need to be updated to handle additional filters
 
-    return render_template('results_list.html', recipes = recipe_list)
+    global recipes_cache
+
+    # Assign UUIDs and store in server-side cache
+    recipe_links = []
+    for recipe in recipe_list:
+        recipe_id = str(uuid.uuid4())  # Generate unique ID for each recipe
+        recipes_cache[recipe_id] = recipe  # Store recipe data in cache
+        recipe_links.append((recipe, recipe_id)) # Make list of recipes along with unique ID's to display on results list. With the UUIDs in recipe_links, we can link to any recipe details by retrieving the data from the server-side cache.
+
+    return render_template('results_list.html', recipe_links = recipe_links)
+
+@auth.route('/recipe_details/<recipe_id>')
+@login_required
+def recipe_details(recipe_id):
+
+    #retrieve recipe based on UUID (unique id passed through the url from results list, associated with respective recipe data)
+    recipe = recipes_cache.get(recipe_id)
+    if not recipe:
+        flash("Recipe not found.", "danger")
+        return redirect(url_for('auth.dashboard'))
+
+    return render_template('recipe_details.html', recipe=recipe)

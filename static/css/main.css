@@ -19,7 +19,7 @@ h1 {
 }
 
 .search-container{
-    width: 80%;
+    padding: 1rem;
 }
 
 /* -----------------------------------------------------RESULTS LIST CSS------------------------------------------------------ */
@@ -53,6 +53,12 @@ h1 {
     width: 100%;
     border-radius: 3px;
 }
+
+/* -----------------------------------------------------RECIPE DETAILS CSS------------------------------------------------------ */
+.details-body{
+    justify-content: center;
+}
+
 /* -----------------------------------------------------AUTHENTICATION CSS------------------------------------------------------ */
 
 .signup-body {
@@ -138,6 +144,8 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 /* ------------------------------------------------------------------------------------------------- */
+
+
 /* Media changes with different screens */
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {

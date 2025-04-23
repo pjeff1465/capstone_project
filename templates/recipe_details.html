@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.label }} - Recipe Details</title>
+    <link rel="stylesheet" href="..\static\css\main.css">
+</head>
+<body class="details-body">
+    <h1>{{ recipe.label }}</h1>
+    <img src="{{ recipe.image }}" alt="{{ recipe.label }}">
+    <p><strong>Servings:</strong> {{ recipe.servings }}</p>
+    <p><strong>Calories:</strong> {{ recipe.calories }} kcal</p>
+
+    <h3>Macronutrients (per recipe):</h3>
+    <ul>
+        <li>Fat: {{ recipe.FAT.quantity }} {{ recipe.FAT.unit }}</li>
+        <li>Protein: {{ recipe.PROTIEN.quantity }} {{ recipe.PROTIEN.unit }}</li>
+        <li>Carbs: {{ recipe.CARBS.quantity }} {{ recipe.CARBS.unit }}</li>
+        <li>Fiber: {{ recipe.FIBER.quantity }} {{ recipe.FIBER.unit }}</li>
+        <li>Sugar: {{ recipe.SUGAR.quantity }} {{ recipe.SUGAR.unit }}</li>
+    </ul>
+
+    <h3>Ingredients:</h3>
+    <ul>
+        {% for ingredient in recipe.ingredientLines %}
+            <li>{{ ingredient }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Tags:</h3>
+    <p>Meal Type: {{ recipe.mealType | join(", ") }}</p>
+    <p>Cuisine: {{ recipe.cuisineType | join(", ") }}</p>
+    <p>Diet Labels: {{ recipe.dietLabels | join(", ") }}</p>
+    <p>Health Labels: {{ recipe.healthLabels | join(", ") }}</p>
+
+    <a href="{{ url_for('auth.dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

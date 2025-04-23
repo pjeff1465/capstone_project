@@ -9,11 +9,13 @@
 <body>
     <h1>Title</h1>
     <div class="recipe-container">
-        {% for recipe in recipes %}
+        {% for recipe, recipe_id in recipe_links %}
             <div class="recipe-card">
                 <img src="{{ recipe.image }}" alt="{{ recipe.label }}">
                 <h2>{{ recipe.label }}</h2>
-                <a href="{{ recipe.url }}" target="_blank">View Recipe</a>
+                
+                <!-- Link to redirect to recipe details, uses UUID to provide unique identifier to retrieve data needed to show recipe details -->
+                <a href="{{ url_for('auth.recipe_details', recipe_id=recipe_id) }}" target="_blank">View Recipe</a>
             </div>
         {% endfor %}
     </div>
