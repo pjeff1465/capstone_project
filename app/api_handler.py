@@ -18,7 +18,7 @@ def get_request(url:str, params:dict, headers:dict) -> dict:
         if response and response.status_code == 200:
             return response.json()
         elif response.status_code == 401:
-            return "Unauthorized request, ensure valid authoriziation paramaters"
+            return "Unauthorized request, ensure valid authorization parameters"
         elif response.status_code == 400:
             return "Bad request, check paramaters and try again"
         else:

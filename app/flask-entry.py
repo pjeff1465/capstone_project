@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for
-from config import Config
-from extensions import db, login_manager
+from app.config import Config
+from app.extensions import db, login_manager
 from flask_sqlalchemy import SQLAlchemy 
 from flask_login import current_user
 import os
@@ -13,7 +13,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     
-    from routes import auth 
+    from app.routes import auth 
     app.register_blueprint(auth)
 
     with app.app_context():

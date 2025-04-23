@@ -3,9 +3,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
 import uuid
 
-from extensions import db, login_manager
-from models import User 
-from api import get_recipes
+from app.extensions import db, login_manager
+from app.models import User 
+from app.api_handler import get_recipes
 
 auth = Blueprint('auth', __name__)
 
