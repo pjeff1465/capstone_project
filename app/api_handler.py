@@ -61,7 +61,7 @@ def parse_data(data: dict) -> list[dict]:
     return recipes
 
 
-def get_recipes(search_query) -> list[dict]:
+def get_recipes(search_query, diet=None, meal=None, cuisine=None, health=None) -> list[dict]:
     """
     Returns: list of dictionaries, each dict containing data from 1 recipe, including label(recipe name), image, etc. Should have length  <=20, based on search query/filters provided to api request
     """
@@ -76,6 +76,16 @@ def get_recipes(search_query) -> list[dict]:
 
     headers = {"Edamam-Account-User": api_user}
     parameters = {"type": "public", "q":search_query, "app_id":api_id, "app_key":api_key}
+
+    # only add filters if provided
+    if diet:
+        parameters["diet"] = diet
+    if meal:
+        parameters["meal"] = meal
+    if cuisine: 
+        parameters["cuisineType"] = cuisine
+    if health:
+        parameters["Health"] = health
 
     response = get_request(full_url, parameters, headers)
     recipes = parse_data(response)
