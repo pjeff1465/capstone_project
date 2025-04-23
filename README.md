@@ -15,7 +15,8 @@ Our project will solve the problem of not knowing what you are going to eat! Our
 - Drop-down Filter
 - Type of food, meal price, amount of people, macros of nutrition, number of ingredients, time of day, etc.
 - Scale recipe and provide appropriate ingredient amounts based on number of people or total calories.
-3.3 Stretch Goals:
+
+**3.3** - Stretch Goals:
 - Allow users to sign up for an account to access the following features: 
     - Sign-up goals
     - Grocery check-list
@@ -32,8 +33,25 @@ Our project will solve the problem of not knowing what you are going to eat! Our
 
 ## 5.0 Dependencies
 
-**5.1** - Backend: Python, MySQL
+**5.1** - Backend: Python/Flask, SQLite
 
-**5.2** - Frontend: Javascript, HTML/CSS
+**5.2** - Frontend: HTML/CSS
 
 ## 6.0 Deployment / How to Run
+To run or deploy this application see the following steps
+
+Clone the git repo found here: [Git Repo](https://github.com/pjeff1465/capstone_project)
+
+**6.1** - Python Virtual Environment 
+
+Create a .venv in the root of the project folder and download the contents of requirements.txt using the following command: `pip install -r requirements.txt`
+
+**6.2** - Run in development mode
+
+To view this application you can run locally, hosted on localhost using the following command: `flask --app app/flask-entry run`
+This application uses `flask-entry.py` as the entry point to create the app and initial route
+
+**6.3** - Run Tests
+
+Tests are split into files mirroring the file structure of the application.
+To run any of the test files, ensure you are in the root directory and run the following: `pytest .\tests\<filename>`. For example: `pytest .\tests\test_api.py` which will run unit tests checking the functions which handle api requests. 
