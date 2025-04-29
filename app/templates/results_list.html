@@ -4,103 +4,114 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Results List</title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        .choices {
+            min-width: 300px;
+            max-width: 400px;
+            height: auto;
+            font-size: 16px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="filters">
-        <form action="/data" method="post" style="margin-bottom: 20px;">
-            <input type="hidden" name="query" value="{{ request.form.get('query', '') }}">
+    <div class="filters-container">
+        <h2>Modify Filters</h2>
+        <p>If the results aren't what you are looking for, you can select new filters and search again</p>
+        <div class="filters">
+            <form action="/data" method="post" style="margin-bottom: 20px;" class="filters-form">
+                <input type="hidden" name="query" value="{{ request.form.get('query', '') }}">
+                
+                <!-- Diet type dropdown -->
+                <select name="diet[]" class="dropdown" multiple>
+                    <option value="">Any Diet</option>
+                    <option value="balanced">Balanced Diet</option>
+                    <option value="high-fiber">High-Fiber Diet</option>
+                    <option value="high-protein">High-Protein Diet</option>
+                    <option value="low-carb">Low-Carb Diet</option>
+                    <option value="low-fat">Low-Fat Diet</option>
+                    <option value="low-sodium">Low-Sodium Diet</option>
+                </select>
 
-            <!-- Diet type dropdown -->
-            <select name="diet[]" class="dropdown" multiple>
-                <option value="">Any Diet</option>
-                <option value="balanced">Balanced Diet</option>
-                <option value="high-fiber">High-Fiber Diet</option>
-                <option value="high-protein">High-Protein Diet</option>
-                <option value="low-carb">Low-Carb Diet</option>
-                <option value="low-fat">Low-Fat Diet</option>
-                <option value="low-sodium">Low-Sodium Diet</option>
-            </select>
+                <!-- Health type dropdown -->
+                <select name="health[]" class="dropdown" multiple>
+                    <option value="">Any Health</option>
+                    <option value="celery-free">Celery-Free Food</option>
+                    <option value="crustacean-free">Crustacean-Free Food</option>
+                    <option value="dairy-free">Dairy-Free Food</option>
+                    <option value="egg-free">Egg-Free Food</option>
+                    <option value="fish-free">Fish-Free Food</option>
+                    <option value="gluten-free">Gluten-Free Food</option>
+                    <option value="kosher">Kosher Food</option>
+                    <option value="low-sugar">Low Sugar Food</option>
+                    <option value="mustard-free">Mustard-Free Food</option>
+                    <option value="peanut-free">Peanut-Free Food</option>
+                    <option value="pork-free">Pork-Free Food</option>
+                    <option value="shellfish-free">Shellfish-Free Food</option>
+                    <option value="soy-free">Soy-Free Food</option>
+                    <option value="tree-nut-free">Tree-Nut Free Food</option>
+                    <option value="vegan">Vegan Food</option>
+                    <option value="vegetarian">Vegetarian Food</option>
+                    <option value="wheat-free">Wheat Free Food</option>
+                </select>
 
-            <!-- Health type dropdown -->
-            <select name="health[]" class="dropdown" multiple>
-                <option value="">Any Health</option>
-                <option value="celery-free">Celery-Free Food</option>
-                <option value="crustacean-free">Crustacean-Free Food</option>
-                <option value="dairy-free">Dairy-Free Food</option>
-                <option value="egg-free">Egg-Free Food</option>
-                <option value="fish-free">Fish-Free Food</option>
-                <option value="gluten-free">Gluten-Free Food</option>
-                <option value="kosher">Kosher Food</option>
-                <option value="low-sugar">Low Sugar Food</option>
-                <option value="mustard-free">Mustard-Free Food</option>
-                <option value="peanut-free">Peanut-Free Food</option>
-                <option value="pork-free">Pork-Free Food</option>
-                <option value="shellfish-free">Shellfish-Free Food</option>
-                <option value="soy-free">Soy-Free Food</option>
-                <option value="tree-nut-free">Tree-Nut Free Food</option>
-                <option value="vegan">Vegan Food</option>
-                <option value="vegetarian">Vegetarian Food</option>
-                <option value="wheat-free">Wheat Free Food</option>
-            </select>
+                <!-- Meal Type Dropdown -->
+                <select name="mealType[]" class="dropdown" multiple>
+                    <option value="">All Meal Types</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="brunch">Brunch</option>
+                    <option value="lunch/dinner">Lunch/ Dinner</option>
+                    <option value="snack">Snack</option>
+                    <option value="teatime">Tea Time</option>
+                </select>
+                
+                <!-- Dish Type Dropdown -->
+                <select name="dishType[]" class="dropdown" multiple>
+                    <option value="">All Dish Types</option>
+                    <option value="bread">Bread</option>
+                    <option value="condiments and sauces">Condiments and Sauces</option>
+                    <option value="desserts">Desserts</option>
+                    <option value="drinks">Drinks</option>
+                    <option value="egg">Egg</option>
+                    <option value="main course">Main Course</option>
+                    <option value="pasta">Pasta</option>
+                    <option value="pastry">Pastry</option>
+                    <option value="pies and tarts">Pies and Tarts</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="salad">Salad</option>
+                    <option value="sandwiches">Sandwiches</option>
+                    <option value="seafood">Seafood</option>
+                    <option value="side dish">Side Dishes</option>
+                    <option value="soup">Soup</option>
+                    <option value="sweets">Sweets</option>
+                </select>
 
-            <!-- Meal Type Dropdown -->
-            <select name="mealType[]" class="dropdown">
-                <option value="">All Meal Types</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="brunch">Brunch</option>
-                <option value="lunch/dinner">Lunch/ Dinner</option>
-                <option value="snack">Snack</option>
-                <option value="teatime">Tea Time</option>
-            </select>
-
-            <!-- Dish Type Dropdown -->
-            <select name="dishType[]" class="dropdown">
-                <option value="">All Dish Types</option>
-                <option value="bread">Bread</option>
-                <option value="condiments and sauces">Condiments and Sauces</option>
-                <option value="desserts">Desserts</option>
-                <option value="drinks">Drinks</option>
-                <option value="egg">Egg</option>
-                <option value="main course">Main Course</option>
-                <option value="pasta">Pasta</option>
-                <option value="pastry">Pastry</option>
-                <option value="pies and tarts">Pies and Tarts</option>
-                <option value="pizza">Pizza</option>
-                <option value="salad">Salad</option>
-                <option value="sandwiches">Sandwiches</option>
-                <option value="seafood">Seafood</option>
-                <option value="side dish">Side Dishes</option>
-                <option value="soup">Soup</option>
-                <option value="sweets">Sweets</option>
-            </select>
-
-            <!-- Cuisine Types Dropdown -->
-            <select name="cuisineType[]" class="dropdown">
-                <option value="">All Cuisine Types</option>
-                <option value="american">American</option>
-                <option value="asian">Asian</option>
-                <option value="british">British</option>
-                <option value="chinese">Chinese</option>
-                <option value="french">French</option>
-                <option value="greek">Greek</option>
-                <option value="indian">Indian</option>
-                <option value="italian">Italian</option>
-                <option value="japanese">Japanese</option>
-                <option value="korean">Korean</option>
-                <option value="mexican">Mexican</option>
-                <option value="middle eastern">Middle Eastern</option>
-                <option value="south american">South American</option>
-            </select>
-
-            <input type="submit" value="Search">
-        </form>
+                <!-- Cuisine Types Dropdown -->
+                <select name="cuisineType[]" class="dropdown" multiple>
+                    <option value="">All Cuisine Types</option>
+                    <option value="american">American</option>
+                    <option value="asian">Asian</option>
+                    <option value="british">British</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="french">French</option>
+                    <option value="greek">Greek</option>
+                    <option value="indian">Indian</option>
+                    <option value="italian">Italian</option>
+                    <option value="japanese">Japanese</option>
+                    <option value="korean">Korean</option>
+                    <option value="mexican">Mexican</option>
+                    <option value="middle eastern">Middle Eastern</option>
+                    <option value="south american">South American</option>
+                </select>
+                
+                <input type="submit" value="Search">
+            </form>
+        </div>
     </div>
-
-    <h1>Title</h1>
+    
+    <h1>Results</h1>
     <div class="recipe-container">
         {% for recipe, recipe_id in recipe_links %}
             <div class="recipe-card">

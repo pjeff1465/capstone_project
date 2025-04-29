@@ -12,8 +12,7 @@
         .search-form {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
+            justify-content: space-between;
         }
 
         .search-input {
@@ -22,29 +21,29 @@
             padding: 8px;
             font-size: 16px;
         }
+
         .filter-form {
             display: flex;
             flex-wrap: wrap;
             gap: 20px; /* space between items */
         }
 
-        .filter-form select {
-            min-width: 200px;
-            max-width: 250px;
+        .choices {
+            min-width: 300px;
+            max-width: 400px;
             height: auto;
-            padding: 8px;
             font-size: 16px;
             overflow-y: auto;
         }
 
-        .filter-dropdown {
+        /* .filter-dropdown {
             flex: 1;
-            min-width: 200px; /* Make the dropdown wider */
+            min-width: 200px; /* Make the dropdown wider *
             padding: 8px;
             font-size: 16px;
-            height: 150px; /* Make it taller if it's a multiple select */
-            overflow-y: auto; /* Scrollbar appears if needed */
-        }
+            height: 150px; /* Make it taller if it's a multiple select *
+            overflow-y: auto; /* Scrollbar appears if needed *
+        } */
 
         .search-button {
             padding: 8px 16px;

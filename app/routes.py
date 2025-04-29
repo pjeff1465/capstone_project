@@ -74,16 +74,16 @@ recipes_cache = {}
 @auth.route('/data', methods=['POST'])
 @login_required
 def call_api():
-    query = request.form.get('query') # attempts to pull search query field from html form where route is called. will need to add more lines for further filters
-    
-    # build recipe list with added filters
-    health_filters = request.form.getlist('health')
-    diet_filters = request.form.getlist('diet')
-    meal_filters = request.form.getlist('mealType')
-    cuisine_filters = request.form.getlist('cuisineType')
-    dish_filters = request.form.getlist('dishType')
+    query = request.form.get('query') # attempts to pull search query field from html form where route is called
 
-    recipe_list = get_recipes(search_query=query, health=health_filters, meal=meal_filters, cuisine=cuisine_filters, diet=diet_filters, dish=dish_filters) #this function call, and the function itself will need to be updated to handle additional filters
+    # build recipe list with added filters
+    health_filters = request.form.getlist('health[]')
+    diet_filters = request.form.getlist('diet[]')
+    meal_filters = request.form.getlist('mealType[]')
+    cuisine_filters = request.form.getlist('cuisineType[]')
+    dish_filters = request.form.getlist('dishType[]')
+
+    recipe_list = get_recipes(search_query=query, health=health_filters, meal=meal_filters, cuisine=cuisine_filters, diet=diet_filters, dish=dish_filters)
 
     global recipes_cache
 

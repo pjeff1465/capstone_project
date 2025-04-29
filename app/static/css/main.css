@@ -20,9 +20,17 @@ h1 {
 
 .search-container{
     padding: 1rem;
+    width: 90%;
 }
 
 /* -----------------------------------------------------RESULTS LIST CSS------------------------------------------------------ */
+.filters-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .recipe-container{
     display: flex;
     flex-wrap: wrap;
@@ -52,6 +60,17 @@ h1 {
 .recipe-card img {
     width: 100%;
     border-radius: 3px;
+}
+
+.filters{
+    padding: 1rem;
+    width: 90%;
+}
+
+.filters-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 /* -----------------------------------------------------RECIPE DETAILS CSS------------------------------------------------------ */
