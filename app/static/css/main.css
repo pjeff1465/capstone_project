@@ -12,20 +12,117 @@ h1 {
 }
 /* -----------------------------------------------------DASHBOARD CSS------------------------------------------------------ */
 
-.dashboard-body{
+.searchtitle {
+    background-color: #2e5c2e;
+    color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 80%;                /* or set a max-width */
+    max-width: 800px;          /* limits how wide it can get */
+    max-height: 120px;
+    margin: 20px auto;         /* centers it horizontally and adds vertical space */
+    padding: 20px;             /* inner space */
+    border-radius: 15px;       /* rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* optional soft shadow */
+}
+
+.dashboard-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 150px; /* space below the green title box */
+}
+
+.search-container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Layout of the whole form */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     align-items: center;
 }
 
-.search-container{
-    padding: 1rem;
-    width: 90%;
+/* Search bar on top */
+.search-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.custom-search-button {
+    background-color: #ef6ecd !important; /* Change to any color */
+    color: white !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+}
+.custom-search-button:hover {
+    background-color: #ee42c0 !important; /* Optional: darker on hover */
+}
+
+/* Filters below */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.filter-form select {
+    width: 100%;
+    max-width: 400px;
+    min-width: 350px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
 /* -----------------------------------------------------RESULTS LIST CSS------------------------------------------------------ */
+.title {
+    background-color: #2e5c2e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 80%;                /* or set a max-width */
+    max-width: 800px;          /* limits how wide it can get */
+    max-height: 120px;
+    margin: 20px auto;         /* centers it horizontally and adds vertical space */
+    padding: 20px;             /* inner space */
+    border-radius: 15px;       /* rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* optional soft shadow */
+}
+
+
 .filters-container{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -71,6 +168,19 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.custom-search-button {
+    background-color: #ef6ecd !important; /* Change to any color */
+    color: white !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+}
+.custom-search-button:hover {
+    background-color: #ee42c0 !important; /* Optional: darker on hover */
 }
 
 /* -----------------------------------------------------RECIPE DETAILS CSS------------------------------------------------------ */
