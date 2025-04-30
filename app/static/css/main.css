@@ -86,19 +86,16 @@ h1 {
 .filter-form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
+    gap: 20px;
 }
 
 .filter-form select {
-    width: 100%;
-    max-width: 400px;
-    min-width: 350px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    width: 250px; /* Fixed width */
+    height: 40px; /* Fixed height for consistency */
+    padding: 8px;
+    font-size: 16px;
+    overflow-y: auto;
+    white-space: nowrap; /* Prevent text from breaking */
 }
 
 /* -----------------------------------------------------RESULTS LIST CSS------------------------------------------------------ */
