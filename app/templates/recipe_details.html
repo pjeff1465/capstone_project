@@ -72,6 +72,11 @@
             </p>
         </div>
 
+        <div class="save-profile">
+            <form action="{{ url_for('auth.save_recipe', recipe_id=recipe_id) }}" method="post">
+                <button type="submit">Save to Profile</button>
+            </form>
+        </div>
 
         <h3>Tags:</h3>
         <p>Meal Type: {{ recipe.mealType | join(", ") }}</p>

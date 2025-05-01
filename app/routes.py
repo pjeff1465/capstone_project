@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 import uuid
 
 from app.extensions import db, login_manager
-from app.models import User 
+from app.models import User, Recipes 
 from app.api_handler import get_recipes
 
 auth = Blueprint('auth', __name__)
@@ -106,9 +106,38 @@ def recipe_details(recipe_id):
         flash("Recipe not found.", "danger")
         return redirect(url_for('auth.dashboard'))
 
-    return render_template('recipe_details.html', recipe=recipe)
+    return render_template('recipe_details.html', recipe=recipe, recipe_id=recipe_id)
 
 @auth.route('/recipe/<int:recipe_id>')
 def show_recipe(recipe_id):
     recipe = recipe_id
     return render_template('recipe.html', recipe=recipe)
+
+@auth.route('/profile')
+@login_required
+def user_profile():
+    saved_recipes = current_user.saved_recipes
+    return render_template('user.html', saved_recipes=saved_recipes)
+
+@auth.route('/save_recipe/<recipe_id>', methods=['POST'])
+@login_required
+def save_recipe(recipe_id):
+    recipe = recipes_cache.get(recipe_id)
+    if not recipe:
+        flash("Recipe not found.", "danger")
+        return redirect(url_for('auth.dashboard'))
+
+    # Create and save the recipe to DB
+    saved = Recipes(
+        user_id=current_user.id,
+        label=recipe['label'],
+        image=recipe['image'],
+        url=recipe['url'],
+        calories=recipe['calories'],
+        servings=recipe['servings']
+    )
+    db.session.add(saved)
+    db.session.commit()
+
+    flash("Recipe saved to your profile!", "success")
+    return redirect(url_for('auth.user_profile'))

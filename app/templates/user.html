@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="32x32" rel="icon" href="..\static\icons8-recipe-32.png">
+    <link rel="stylesheet" href="..\static\css\main.css">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>{{ current_user.email }}'s Saved Recipes</h1>
+
+    <ul>
+        {% for recipe in saved_recipes %}
+            <li>
+                <img src="{{ recipe.image }}" width="100"><br>
+                <a href="{{ recipe.url }}" target="_blank">{{ recipe.label }}</a><br>
+                {{ recipe.calories | round }} calories, {{ recipe.servings }} servings
+            </li>
+        {% else %}
+            <li>No saved recipes yet!</li>
+        {% endfor %}
+    </ul>
+
+    <div class="dashboard">
+        <p><a href="{{ url_for('auth.dashboard') }}">← Back to Dashboard</a></p>
+    </div>
+</body>
+</html>
