@@ -54,7 +54,8 @@ def parse_data(data: dict) -> list[dict]:
             "PROTIEN": item["totalNutrients"]["PROCNT"],
             "CARBS": item["totalNutrients"]["CHOCDF"],
             "FIBER": item["totalNutrients"]["FIBTG"],
-            "SUGAR": item["totalNutrients"]["SUGAR"]
+            "SUGAR": item["totalNutrients"]["SUGAR"],
+            'url': item['url'] # pass in url for cooking details
         }
         for item in data_recipe_list   
     ]
