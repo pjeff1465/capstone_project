@@ -311,6 +311,21 @@ h1 {
     line-height: 1.4;
 }
 
+.recipe-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.recipe-link:hover {
+    background-color: #45a049;
+}
+
 .recipe{
     text-align:center;
     justify-content: center;

@@ -107,3 +107,8 @@ def recipe_details(recipe_id):
         return redirect(url_for('auth.dashboard'))
 
     return render_template('recipe_details.html', recipe=recipe)
+
+@auth.route('/recipe/<int:recipe_id>')
+def show_recipe(recipe_id):
+    recipe = recipe_id
+    return render_template('recipe.html', recipe=recipe)
