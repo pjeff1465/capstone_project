@@ -50,7 +50,7 @@ Create a .venv in the root of the project folder and download the contents of re
 
 **6.2** - Run in development mode
 
-To view this application you can run locally, hosted on localhost using the following command: `flask --app app/flask-entry run`
+To view this application you can run locally, hosted on localhost using the following command: `flask --app app/flask_entry run`
 This application uses `flask-entry.py` as the entry point to create the app and initial route
 
 **6.3** - Run Tests
