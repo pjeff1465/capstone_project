@@ -18,9 +18,11 @@
     </style>
 </head>
 <body>
-    <div class="filters-container">
+    <div class="title">
         <h2>Modify Filters</h2>
-        <p>If the results aren't what you are looking for, you can select new filters and search again</p>
+        <p>If the results aren't what you are looking for, you can select new filters and search again!</p>
+    </div>
+    <div class="filters-container">
         <div class="filters">
             <form action="/data" method="post" style="margin-bottom: 20px;" class="filters-form">
                 <input type="hidden" name="query" value="{{ request.form.get('query', '') }}">
@@ -107,7 +109,7 @@
                     <option value="south american">South American</option>
                 </select>
                 
-                <input type="submit" value="Search">
+                <input type="submit" value="Search" class="custom-search-button">
             </form>
         </div>
     </div>
