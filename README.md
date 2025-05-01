@@ -33,6 +33,8 @@ Our project will solve the problem of not knowing what you are going to eat! Our
 
 ## 5.0 Dependencies
 
+Full list of dependencies can be found in `./requirements.txt`
+
 **5.1** - Backend: Python/Flask, SQLite
 
 **5.2** - Frontend: HTML/CSS
@@ -55,3 +57,5 @@ This application uses `flask-entry.py` as the entry point to create the app and 
 
 Tests are split into files mirroring the file structure of the application.
 To run any of the test files, ensure you are in the root directory and run the following: `pytest .\tests\<filename>`. For example: `pytest .\tests\test_api.py` which will run unit tests checking the functions which handle api requests. 
+
+NOTE: the file `test_api_integration.py` is integration tests for the api and makes real requests to external api. This does not use mocking and therefore rate limits apply.
