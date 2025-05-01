@@ -230,40 +230,62 @@ h1 {
 }
 
 .nutrition-label {
-    background-color: white;
-    color: black;
-    padding: 20px;
-    border: 2px solid black;
+    width: 280px;
+    background: #fff;
+    color: #000;
     font-family: Arial, sans-serif;
-    width: 250px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .nutrition-label h3 {
-    font-size: 22px;
-    border-bottom: 8px solid black;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 900;
+    border-bottom: 10px solid #000;
+    margin-bottom: 8px;
+}
+
+.nutrition-label p.serving-size,
+.nutrition-label p.servings {
+    font-size: 14px;
+    margin: 2px 0;
+}
+
+.nutrition-label .calories {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.label-line {
+    border-top: 1px solid #333;
+    margin: 4px 0;
+}
+
+.bold-line {
+    border-top: 5px solid #000;
 }
 
 .nutrition-label ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.nutrition-label li {
-    border-top: 1px solid #333;
-    padding: 4px 0;
-    font-size: 14px;
+.nutrition-label ul li {
     display: flex;
     justify-content: space-between;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    padding: 4px 0;
 }
 
-.nutrition-label li strong {
-    font-weight: bold;
+.light-text {
+    color: #666;
+    font-size: 12px;
+    margin-left: 4px;
 }
-
 
 .ingredient-box {
     background-color: white;

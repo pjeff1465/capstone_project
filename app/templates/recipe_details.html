@@ -16,18 +16,46 @@
             <div class="macro-image">
                 <img src="{{ recipe.image }}" alt="{{ recipe.label }}">
             </div>
-            <div class="macro-text nutrition-label">
-                <h2>Macros (per recipe):</h2>
-                <ul style="list-style-type: none; padding: 0; margin: 0;">
-                    <li><strong>Servings:</strong> {{ recipe.servings }}</li>
-                    <li><strong>Calories:</strong> {{ recipe.calories }} kcal</li>
-                    <li><strong>Fat:</strong> {{ recipe.FAT.quantity }} {{ recipe.FAT.unit }}</li>
-                    <li><strong>Protein:</strong> {{ recipe.PROTIEN.quantity }} {{ recipe.PROTIEN.unit }}</li>
-                    <li><strong>Carbs:</strong> {{ recipe.CARBS.quantity }} {{ recipe.CARBS.unit }}</li>
-                    <li><strong>Fiber:</strong> {{ recipe.FIBER.quantity }} {{ recipe.FIBER.unit }}</li>
-                    <li><strong>Sugar:</strong> {{ recipe.SUGAR.quantity }} {{ recipe.SUGAR.unit }}</li>
+            <div class="nutrition-label">
+                <h3>Nutrition Facts</h3>
+                <p class="serving-size">Serving Size: 1 of {{ recipe.servings }}</p>
+                <p class="servings">Servings Per Recipe: {{ recipe.servings }}</p>
+            
+                <div class="label-line bold-line"></div>
+                <p class="calories"><strong>Calories</strong> 
+                    {{ (recipe.calories / recipe.servings) | round }} 
+                    <span class="light-text">(Total: {{ recipe.calories | round }})</span>
+                </p>
+                <div class="label-line"></div>
+            
+                <ul>
+                    <li><span>Total Fat</span><span>
+                        {{ (recipe.FAT.quantity / recipe.servings) | round(1) }} {{ recipe.FAT.unit }} 
+                        <span class="light-text">(Tot: {{ recipe.FAT.quantity | round(1) }})</span>
+                    </span></li>
+            
+                    <li><span>Protein</span><span>
+                        {{ (recipe.PROTIEN.quantity / recipe.servings) | round(1) }} {{ recipe.PROTIEN.unit }} 
+                        <span class="light-text">(Tot: {{ recipe.PROTIEN.quantity | round(1) }})</span>
+                    </span></li>
+            
+                    <li><span>Total Carbohydrate</span><span>
+                        {{ (recipe.CARBS.quantity / recipe.servings) | round(1) }} {{ recipe.CARBS.unit }} 
+                        <span class="light-text">(Tot: {{ recipe.CARBS.quantity | round(1) }})</span>
+                    </span></li>
+            
+                    <li><span>Fiber</span><span>
+                        {{ (recipe.FIBER.quantity / recipe.servings) | round(1) }} {{ recipe.FIBER.unit }} 
+                        <span class="light-text">(Tot: {{ recipe.FIBER.quantity | round(1) }})</span>
+                    </span></li>
+            
+                    <li><span>Total Sugars</span><span>
+                        {{ (recipe.SUGAR.quantity / recipe.servings) | round(1) }} {{ recipe.SUGAR.unit }} 
+                        <span class="light-text">(Tot: {{ recipe.SUGAR.quantity | round(1) }})</span>
+                    </span></li>
                 </ul>
-            </div>
+            </div>            
+            
         </div>
         
         <div class="ingredient-box">
