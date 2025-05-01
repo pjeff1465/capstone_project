@@ -130,6 +130,7 @@ def save_recipe(recipe_id):
     # Create and save the recipe to DB
     saved = Recipes(
         user_id=current_user.id,
+        recipe_id=recipe_id,
         label=recipe['label'],
         image=recipe['image'],
         url=recipe['url'],

@@ -14,8 +14,9 @@
         {% for recipe in saved_recipes %}
             <li>
                 <img src="{{ recipe.image }}" width="100"><br>
-                <a href="{{ recipe.url }}" target="_blank">{{ recipe.label }}</a><br>
+                <a href="{{ url_for('auth.recipe_details', recipe_id=recipe.recipe_id) }}" target="_blank">{{ recipe.label }}</a><br>
                 {{ recipe.calories | round }} calories, {{ recipe.servings }} servings
+                <a href="{{ recipe.url }}" target="_blank">View Full Recipe</a>
             </li>
         {% else %}
             <li>No saved recipes yet!</li>
