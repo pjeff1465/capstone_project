@@ -53,10 +53,8 @@ h1 {
 
 /* Search bar on top */
 .search-bar-wrapper {
-    display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 800px;
     gap: 10px;
 }
 
@@ -88,6 +86,17 @@ h1 {
     flex-wrap: wrap;
     gap: 20px;
 }
+
+/* CSS FOR FILTERS DROPDOWN */
+.choices {
+    min-width: 300px;
+    max-width: 400px;
+    height: auto;
+    font-size: 16px;
+    overflow-y: auto;
+    border-radius: 3px;
+}
+/* ---------------------- */
 
 .filter-form select {
     width: 250px; /* Fixed width */
@@ -130,6 +139,9 @@ h1 {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #2e5c2e;
 }
 
 .recipe-card {
@@ -419,6 +431,17 @@ input[type="submit"]:hover {
 .link a:hover {
     text-decoration: underline;
 }
+/* -----------------------------------------------------USER CSS------------------------------------------------------ */
+
+.grocery-container{
+    width: 100%;
+    height: 300px;
+    background-color: #2e5c2e;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+
 /* ------------------------------------------------------------------------------------------------- */
 
 

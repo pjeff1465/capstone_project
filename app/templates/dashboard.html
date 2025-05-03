@@ -19,10 +19,6 @@
     <div class="filters-container">
         <div class="filters">
             <form action="/data" method="post" style="margin-bottom: 20px;" class="filters-form">
-                <div class="search-bar-wrapper" style="display: flex; flex-direction: column; width: 100%; max-width: 800px; margin: 0 auto 2rem auto; gap: 1rem;">
-                    <input type="text" name="query" class="search-input" placeholder="Search for recipes..." style="width: 100%; padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
-                    <input type="submit" value="Search" class="custom-search-button">
-                </div>           
                 <!-- Diet type dropdown -->
                 <select name="diet[]" class="dropdown" multiple>
                     <option value="">Any Diet</option>
@@ -55,7 +51,7 @@
                     <option value="vegetarian">Vegetarian Food</option>
                     <option value="wheat-free">Wheat Free Food</option>
                 </select>
-
+                
                 <!-- Meal Type Dropdown -->
                 <select name="mealType[]" class="dropdown" multiple>
                     <option value="">All Meal Types</option>
@@ -86,7 +82,7 @@
                     <option value="soup">Soup</option>
                     <option value="sweets">Sweets</option>
                 </select>
-
+                
                 <!-- Cuisine Types Dropdown -->
                 <select name="cuisineType[]" class="dropdown" multiple>
                     <option value="">All Cuisine Types</option>
@@ -104,6 +100,11 @@
                     <option value="middle eastern">Middle Eastern</option>
                     <option value="south american">South American</option>
                 </select> 
+                
+                <div class="search-bar-wrapper" style="display: flex; flex-direction: column; width: 100%; margin: 0 auto 2rem auto; gap: 1rem;">
+                    <input type="text" name="query" class="search-input" placeholder="Search for recipes..." style="width: 100%; padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
+                    <input type="submit" value="Search" class="custom-search-button">
+                </div>           
             </form>
         </div>
     </div>
