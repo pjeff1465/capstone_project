@@ -12,6 +12,18 @@
 </head>
 
 <body class="dashboard-body">
+    <header class="banner">
+        <nav class="nav-grid">
+            <div>
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.user_profile') }}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div class="searchtitle">
         <h2>Find New Recipes!</h2>
     </div>
@@ -57,7 +69,8 @@
                     <option value="">All Meal Types</option>
                     <option value="breakfast">Breakfast</option>
                     <option value="brunch">Brunch</option>
-                    <option value="lunch/dinner">Lunch/ Dinner</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
                     <option value="snack">Snack</option>
                     <option value="teatime">Tea Time</option>
                 </select>

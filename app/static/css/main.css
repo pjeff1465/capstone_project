@@ -33,7 +33,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 150px; /* space below the green title box */
+    /* padding-top: 150px; space below the green title box */
 }
 
 .search-container {
@@ -159,7 +159,12 @@ h1 {
     transform: translateY(-5px);
 }
 
+.recipe-card a{
+    text-decoration: none;
+}
+
 .recipe-card a:hover {
+    text-decoration: none;
     background-color: #45a049;
 }
 
@@ -444,6 +449,59 @@ input[type="submit"]:hover {
 
 /* ------------------------------------------------------------------------------------------------- */
 
+.banner{
+    width: 100%;
+    background: #152614;
+    border-bottom: 1px solid #f8f9fa;
+    top: 0;
+    left: 0;
+    box-shadow: 0 1px 4px rgba(146, 161, 176, .15);
+    z-index: 100;
+    position: sticky;
+}
+
+.nav-grid{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-column-gap: 2rem;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    height: 4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 600;
+}
+
+.nav-list{
+    display: flex; 
+    padding-top: 0;
+    list-style: none;
+    margin-right: 1rem;
+}
+
+.nav-item{
+    margin-left: 3rem; margin-bottom: 0;
+}
+
+.nav-link { position: relative; color: #ffffff; text-decoration: none;}
+.nav-link:hover { position: relative; text-decoration: none;}
+.nav-link:hover::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 0.18rem;
+    left: 0;
+    top: 2rem;
+    background-color:#4070F4;
+}
+
+.nav-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
 /* Media changes with different screens */
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
