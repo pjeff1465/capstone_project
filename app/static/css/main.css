@@ -278,7 +278,7 @@ h1 {
     background-color: #ee42c0;
 }
 
-/* Profile Button */
+/* Profile Button (not being used nav. bar replaced it) */
 .profile-link {
     display: flex;
     justify-content: center;
@@ -299,6 +299,23 @@ h1 {
 .profile-link a:hover {
     background-color: #e436b5;
     color: white;
+}
+
+/* Save Recipe Button */
+.view-recipe{
+    color: #ef6ecd;
+    font-family: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-recipe:hover {
+    background-color: #ffe3f6 !important;
+    color: #e329b1 !important;
 }
 
 /* -----------------------------------------------------RECIPE DETAILS CSS------------------------------------------------------ */
@@ -456,6 +473,29 @@ h1 {
     justify-content: center;
 }
 
+/* Save to Profile Button */
+.save-profile {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.save-profile button{
+    color: #fff;
+    background-color: #ef6ecd;
+    font-family: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #ef6ecd;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.save-profile button:hover {
+    background-color: #e436b5;
+    color: white;
+}
 /* -----------------------------------------------------AUTHENTICATION CSS------------------------------------------------------ */
 
 .signup-body {
