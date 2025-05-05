@@ -14,7 +14,6 @@
             height: auto;
             font-size: 16px;
             overflow-y: auto;
-            border-radius: 3px;
         }
     </style>
 </head>
@@ -33,14 +32,16 @@
 
     <div class="title">
         <h2>Modify Filters</h2>
-        <p>If the results aren't what you are looking for, you can select new filters and search again!</p>
+        <p>If the results aren't what you are looking for, search again!</p>
     </div>
-    
     <div class="filters-container">
         <div class="filters">
             <form action="/data" method="post" style="margin-bottom: 20px;" class="filters-form">
-                <input type="hidden" name="query" value="{{ request.form.get('query', '') }}">
-                
+                <!-- Search Bar (moved here) -->
+                <div class="search-bar-wrapper">
+                    <input type="text" name="query" class="search-input" placeholder="Search for recipes..." value="{{ request.form.get('query', '') }}">
+                </div>
+
                 <!-- Diet type dropdown -->
                 <select name="diet[]" class="dropdown" multiple>
                     <option value="">Any Diet</option>
@@ -84,7 +85,7 @@
                     <option value="snack">Snack</option>
                     <option value="teatime">Tea Time</option>
                 </select>
-                
+
                 <!-- Dish Type Dropdown -->
                 <select name="dishType[]" class="dropdown" multiple>
                     <option value="">All Dish Types</option>
@@ -123,14 +124,18 @@
                     <option value="middle eastern">Middle Eastern</option>
                     <option value="south american">South American</option>
                 </select>
-                
+
+                <!-- Submit Button -->
                 <input type="submit" value="Search" class="custom-search-button">
             </form>
         </div>
     </div>
 
-    <a href="{{ url_for('auth.user_profile') }}">Go to Your Profile</a>
-    
+    <!-- Centered Profile Link -->
+    <div class="profile-link">
+        <a href="{{ url_for('auth.user_profile') }}">Go to Your Profile</a>
+    </div>
+
     <h1>Results</h1>
     <div class="recipe-container">
         {% for recipe, recipe_id in recipe_links %}
@@ -142,7 +147,7 @@
         {% endfor %}
     </div>
 
-    <!-- Choices.js JS (moved here to the end) -->
+    <!-- Choices.js script -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
