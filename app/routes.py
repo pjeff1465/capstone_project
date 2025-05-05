@@ -127,6 +127,12 @@ def save_recipe(recipe_id):
         flash("Recipe not found.", "danger")
         return redirect(url_for('auth.dashboard'))
 
+    # Check if recipe already saved
+    existing_recipe = Recipes.query.filter_by(user_id=current_user.id, url=recipe['url']).first()
+    if existing_recipe:
+        flash("This recipe is already saved!", "warning")
+        return redirect(url_for('auth.user_profile'))
+    
     # Create and save the recipe to DB
     saved = Recipes(
         user_id=current_user.id,
@@ -141,4 +147,16 @@ def save_recipe(recipe_id):
     db.session.commit()
 
     flash("Recipe saved to your profile!", "success")
+    return redirect(url_for('auth.user_profile'))
+
+@auth.route('/delete_recipe/<int:recipe_id>', methods=['POST'])
+@login_required
+def delete_recipe(recipe_id):
+    recipe = Recipes.query.filter_by(id=recipe_id, user_id=current_user.id).first()
+    if recipe:
+        db.session.delete(recipe)
+        db.session.commit()
+        flash("Recipe deleted successfully.", "success")
+    else:
+        flash("Recipe not found or unauthorized.", "danger")
     return redirect(url_for('auth.user_profile'))

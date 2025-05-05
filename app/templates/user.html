@@ -2,45 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" sizes="32x32" rel="icon" href="..\static\icons8-recipe-32.png">
-    <link rel="stylesheet" href="..\static\css\main.css">
-    <title>User Profile</title>
+    <title>Your Saved Recipes</title>
+    <link rel="stylesheet" href="../static/css/main.css">
 </head>
-<body>
+<body class="dashboard-body">
     <header class="banner">
         <nav class="nav-grid">
-            <div>
-                <ul class="nav-list">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.user_profile') }}">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
-                </ul>
-            </div>
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
+            </ul>
         </nav>
     </header>
-    
-    <h1>{{ current_user.email }}'s Saved Recipes</h1>
 
-    <ul>
-        {% for recipe in saved_recipes %}
-            <li>
-                <img src="{{ recipe.image }}" width="100"><br>
-                <a href="{{ url_for('auth.recipe_details', recipe_id=recipe.recipe_id) }}" target="_blank">{{ recipe.label }}</a><br>
-                {{ recipe.calories | round }} calories, {{ recipe.servings }} servings
-                <a href="{{ recipe.url }}" target="_blank">View Full Recipe</a>
-            </li>
+    <div class="container">
+        <h2>Your Saved Recipes</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if saved_recipes %}
+            <div class="recipe-grid">
+                {% for recipe in saved_recipes %}
+                    <div class="recipe-card">
+                        <h3>{{ recipe.label }}</h3>
+                        <img src="{{ recipe.image }}" alt="{{ recipe.label }}" class="recipe-img">
+                        <p>Calories: {{ recipe.calories | round }}</p>
+                        <p>Servings: {{ recipe.servings }}</p>
+                        <a href="{{ recipe.url }}" target="_blank" class="view-link">View Full Recipe</a>
+
+                        <form action="{{ url_for('auth.delete_recipe', recipe_id=recipe.id) }}" method="POST" style="margin-top: 10px;">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
         {% else %}
-            <li>No saved recipes yet!</li>
-        {% endfor %}
-    </ul>
-
-    <div class="dashboard">
-        <p><a href="{{ url_for('auth.dashboard') }}">← Back to Dashboard</a></p>
-    </div>
-
-    <div class="grocery-container">
-
+            <p>You have no saved recipes yet.</p>
+        {% endif %}
     </div>
 </body>
 </html>

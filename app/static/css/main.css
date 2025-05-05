@@ -33,7 +33,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 150px; /* space below the green title box */
 }
 
 .search-container {
@@ -126,8 +125,6 @@ h1 {
     padding: 8px;
     font-size: 16px;
     height: 40px;
-    /* overflow-y: auto;
-    white-space: nowrap; */
 }
 
 /* Changes filter boxes appearence */
@@ -558,7 +555,7 @@ input[type="submit"]:hover {
 
 .banner{
     width: 100%;
-    background: #152614;
+    background: #294527;
     border-bottom: 1px solid #f8f9fa;
     top: 0;
     left: 0;
@@ -602,7 +599,7 @@ input[type="submit"]:hover {
     height: 0.18rem;
     left: 0;
     top: 2rem;
-    background-color:#4070F4;
+    background-color:#ef6ecd;
 }
 
 .nav-toggle {
