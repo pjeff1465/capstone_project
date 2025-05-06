@@ -63,7 +63,7 @@ def parse_data(data: dict) -> list[dict]:
     return recipes
 
 
-def get_recipes(search_query, diet=None, meal=None, cuisine=None, health=None, dish=None) -> list[dict]:
+def get_recipes(search_query, diet=None, meal=None, cuisine=None, health=None, dish=None, cal_min=None, cal_max=None) -> list[dict]:
     """
     Returns: list of dictionaries, each dict containing data from 1 recipe, including label(recipe name), image, etc. Should have length  <=20, based on search query/filters provided to api request
     """
@@ -90,6 +90,8 @@ def get_recipes(search_query, diet=None, meal=None, cuisine=None, health=None, d
         parameters["health"] = health
     if dish:
         parameters["dishType"] = dish
+    if cal_min and cal_max:
+        parameters["calories"] = f"{cal_min}-{cal_max}"
 
     response = get_request(full_url, parameters, headers)
     recipes = parse_data(response)

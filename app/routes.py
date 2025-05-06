@@ -83,8 +83,10 @@ def call_api():
     meal_filters = request.form.getlist('mealType[]')
     cuisine_filters = request.form.getlist('cuisineType[]')
     dish_filters = request.form.getlist('dishType[]')
+    min_val = request.form.get('min_value')
+    max_val = request.form.get('max_value')
 
-    recipe_list = get_recipes(search_query=query, health=health_filters, meal=meal_filters, cuisine=cuisine_filters, diet=diet_filters, dish=dish_filters)
+    recipe_list = get_recipes(search_query=query, health=health_filters, meal=meal_filters, cuisine=cuisine_filters, diet=diet_filters, dish=dish_filters, cal_min=min_val, cal_max=max_val)
 
     global recipes_cache
 

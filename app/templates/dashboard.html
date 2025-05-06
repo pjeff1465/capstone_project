@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="image/png" sizes="32x32" rel="icon" href="..\static\icons8-recipe-32.png">
     <link rel="stylesheet" href="../static/css/main.css">
+
+    <!-- Javascript links for multiple selection filters -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Add in Javascript no UI slider for calorie min/max input -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
 </head>
 
 <body class="dashboard-body">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
     <header class="banner">
         <nav class="nav-grid">
             <div>
@@ -120,7 +126,14 @@
                     <option value="mexican">Mexican</option>
                     <option value="middle eastern">Middle Eastern</option>
                     <option value="south american">South American</option>
-                </select> 
+                </select>
+                
+                <div class="slider-container">
+                    <p>Calories per Serving</p>
+                    <div class="slider-styled" id="slider-round"></div>
+                    <input type="hidden" name="min_value" id="min_value">
+                    <input type="hidden" name="max_value" id="max_value"> 
+                </div>
 
                 <input type="submit" value="Search" class="custom-search-button">
 
@@ -139,6 +152,37 @@
             });
         });
     </script>
+
+    <script>
+        var slider = document.getElementById('slider-round');
+      
+        noUiSlider.create(slider, {
+            start: [0, 2000],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 2000
+            },
+            step: 5,
+            tooltips: true,
+            format: {
+              to: function (value) {
+                return Math.round(value);
+              },
+              from: function (value) {
+                return Number(value);
+              }
+            }
+        });
+      
+        var minInput = document.getElementById('min_value');
+        var maxInput = document.getElementById('max_value');
+      
+        slider.noUiSlider.on('update', function(values, handle) {
+          minInput.value = values[0];
+          maxInput.value = values[1];
+        });
+      </script>
 </body>
 </html>
 

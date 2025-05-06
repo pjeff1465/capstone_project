@@ -12,6 +12,49 @@ h1 {
 }
 /* -----------------------------------------------------DASHBOARD CSS------------------------------------------------------ */
 
+.slider-container{
+    margin-top: 0px;
+}
+
+.slider-container p{
+    color: white;
+    margin-bottom: 0px;
+}
+
+#slider-round {
+    margin-top: 40px;
+    width: 300px;
+}
+
+#slider-round {
+    height: 10px;
+}
+
+#slider-round .noUi-connect {
+    background: #ef6ecd;
+}
+
+#slider-round .noUi-handle {
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px; /* half the width */
+    border-radius: 9px;
+}
+
+#slider-round .noUi-handle-lower {
+    right: 0;
+}
+
+#slider-round .noUi-handle-upper {
+    right: -10px;
+}
+
+.slider-styled .noUi-handle::before,
+.slider-styled .noUi-handle::after {
+    display: none;
+}
+
 /* Header */
 .searchtitle {
     background-color: #2e5c2e;
@@ -56,7 +99,7 @@ h1 {
     flex-direction: column;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 0 auto;
     gap: 1rem;
 }
 
@@ -76,6 +119,7 @@ h1 {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .custom-search-button:hover {
@@ -92,6 +136,8 @@ h1 {
     font-size: 16px;
     overflow-y: auto;
     border-radius: 3px;
+    margin-top: 25px;
+    margin-bottom: 0px;
 }
 /* ---------------------- */          
 
