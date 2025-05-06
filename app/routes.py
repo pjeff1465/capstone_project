@@ -142,7 +142,8 @@ def save_recipe(recipe_id):
     existing_recipe = Recipes.query.filter_by(user_id=current_user.id, url=recipe['url']).first()
     if existing_recipe:
         flash("This recipe is already saved!", "warning")
-        return redirect(url_for('auth.user_profile'))
+        recipe_links = [(v, k) for k, v in recipes_cache.items()]
+        return render_template('results_list.html', recipe_links=recipe_links)
     
     # Create and save the recipe to DB
     saved = Recipes(

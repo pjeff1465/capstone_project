@@ -318,6 +318,39 @@ h1 {
     color: #e329b1 !important;
 }
 
+/* Duplicate Recipe Error Button */
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+    text-align: center;
+}
+
+.flash {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px auto;
+    width: fit-content;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash.warning {
+    background-color: #fc1b1b;
+    color: #fff;
+    border: 1px solid #fc1b1b;
+}
+
+.flash.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
 /* -----------------------------------------------------RECIPE DETAILS CSS------------------------------------------------------ */
 .dish-title{
     background-color: #e875cf;
@@ -583,6 +616,121 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 /* -----------------------------------------------------USER CSS------------------------------------------------------ */
+.user-container {
+    max-width: 1200px; /* wider than before */
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.user-header {
+    color: #4b7f46;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Flash Messages */
+.flash {
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.flash.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Recipes Grid */
+.recipe-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.recipe-card {
+    background: white;
+    border: 1px solid #f0cbe3;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 450px; /* Adjust as needed */
+}
+
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* View & Delete Buttons */
+.view-link,
+.delete-btn {
+    display: inline-block;
+    margin: 5px auto;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.view-link {
+    background-color: #ef6ecd;
+    color: white;
+    border: 1px solid #ef6ecd;
+}
+
+.view-link:hover {
+    background-color: #e436b5;
+    color: white;
+}
+
+.delete-btn {
+    background-color: white;
+    color: #e436b5;
+    border: 1px solid #e436b5;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #ffe3f6;
+}
 
 .grocery-container{
     width: 90%;
@@ -631,6 +779,12 @@ input[type="submit"]:hover {
     margin-bottom: 10px;
     border-bottom: 2px solid #ed5bc6;
     padding-bottom: 5px;
+}
+
+.grocery-title {
+    align-items: center;
+    color: #fff;
+    text-align: center;
 }
 
 
