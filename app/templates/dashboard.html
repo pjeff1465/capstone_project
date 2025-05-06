@@ -15,9 +15,15 @@
         <nav class="nav-grid">
             <div>
                 <ul class="nav-list">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.user_profile') }}">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                    <div class="profile-link">
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.user_profile') }}">Profile</a></li>
+                    </div>
+                    <div class="profile-link">
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a></li>
+                    </div>
+                    <div class="profile-link">
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                    </div>
                 </ul>
             </div>
         </nav>

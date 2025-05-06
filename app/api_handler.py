@@ -47,6 +47,7 @@ def parse_data(data: dict) -> list[dict]:
             "dietLabels": item["dietLabels"],
             "healthLabels": item["healthLabels"],
             "ingredientLines": item["ingredientLines"],
+            "ingredients": [{"food_name":ingredient["food"], "food_category":ingredient["foodCategory"]} for ingredient in item["ingredients"]],
             "calories": item["calories"],
             "cuisineType": item["cuisineType"],
             "mealType": item["mealType"],

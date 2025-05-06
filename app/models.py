@@ -15,5 +15,6 @@ class Recipes(db.Model):
     url = db.Column(db.String(500))
     calories = db.Column(db.Float)
     servings = db.Column(db.Integer)
+    ingredients = db.Column(db.JSON)
 
     user = db.relationship('User', backref='saved_recipes')

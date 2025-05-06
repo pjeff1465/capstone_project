@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
+from collections import defaultdict
 import uuid
 
 from app.extensions import db, login_manager
@@ -117,7 +118,17 @@ def show_recipe(recipe_id):
 @login_required
 def user_profile():
     saved_recipes = current_user.saved_recipes
-    return render_template('user.html', saved_recipes=saved_recipes)
+
+    #MAKE GROCERY LIST
+    grocery_dict = defaultdict(set)
+    for recipe in saved_recipes:
+        for ingredient in recipe.ingredients:
+            food_name = ingredient.get('food_name')
+            food_category = ingredient.get('food_category', 'Uncategorized')
+            grocery_dict[food_category.lower().capitalize()].add(food_name)
+
+    grocery_list = {category: sorted(list(foods)) for category, foods in grocery_dict.items()}
+    return render_template('user.html', saved_recipes=saved_recipes, grocery_list=grocery_list)
 
 @auth.route('/save_recipe/<recipe_id>', methods=['POST'])
 @login_required
@@ -141,7 +152,8 @@ def save_recipe(recipe_id):
         image=recipe['image'],
         url=recipe['url'],
         calories=recipe['calories'],
-        servings=recipe['servings']
+        servings=recipe['servings'],
+        ingredients=recipe['ingredients']
     )
     db.session.add(saved)
     db.session.commit()

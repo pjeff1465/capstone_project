@@ -531,6 +531,8 @@ h1 {
 
 .container {
     background-color: #fff;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -584,11 +586,46 @@ input[type="submit"]:hover {
 
 .grocery-container{
     width: 100%;
-    height: 300px;
     background-color: #2e5c2e;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.grocery-container h2{
+    width: 100%;
+    padding-left: 2rem;
+    box-sizing: border-box;
+}
+
+.categories-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grocery-category {
+    padding: 1rem;
+    margin-bottom: 20px;
+    min-width: 20%;
+}
+
+.grocery-category ul{
+    padding-left: 0;
+}
+
+.grocery-category li{
+    list-style-type: none;
+    text-transform: capitalize;
+}
+
+.grocery-category input{
+    width: auto;
+}
+
+.grocery-category h3 {
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
 
 
 /* ------------------------------------------------------------------------------------------------- */
@@ -632,7 +669,7 @@ input[type="submit"]:hover {
 
 .nav-link { position: relative; color: #ffffff; text-decoration: none;}
 .nav-link:hover { position: relative; text-decoration: none;}
-.nav-link:hover::after {
+/* .nav-link:hover::after {
     position: absolute;
     content: '';
     width: 100%;
@@ -640,7 +677,7 @@ input[type="submit"]:hover {
     left: 0;
     top: 2rem;
     background-color:#ef6ecd;
-}
+} */
 
 .nav-toggle {
     font-size: 1.5rem;
