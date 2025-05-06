@@ -53,13 +53,15 @@ h1 {
 
 .search-bar-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    gap: 1rem;
 }
 
 .search-input {
-    flex: 1;
+    width: 100%;
     padding: 12px;
     font-size: 16px;
     border-radius: 8px;
@@ -81,23 +83,6 @@ h1 {
 }
 
 /* Filters */
-/* use this to change filter background box */
-.filters-form { 
-    width: 80%;
-    max-width: 500px; 
-    padding: 40px;
-    margin: 0 auto;
-    border-radius: 10px;
-    background: #a4cd80;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.filter-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
-}
 
 /* CSS FOR FILTERS DROPDOWN */
 .choices {
@@ -108,24 +93,7 @@ h1 {
     overflow-y: auto;
     border-radius: 3px;
 }
-/* ---------------------- */
-
-.filter-wrapper select {
-    width: 100%;          
-    padding: 12px;         
-    font-size: 18px;       
-    border-radius: 12px;
-    border: 1px solid #fff;
-    box-sizing: border-box;
-}
-
-.filters-form select {
-    width: 100%;
-    max-width: 250px;
-    padding: 8px;
-    font-size: 16px;
-    height: 40px;
-}
+/* ---------------------- */          
 
 /* Changes filter boxes appearence */
 .choices__inner {
@@ -149,6 +117,35 @@ h1 {
     margin: 2px;
 }
 
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between each filter */
+    width: 100%;
+    max-width: 800px; /* Restrict width */
+    margin: 0 auto;
+}
+
+.filters select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #A8D08D; /* Green background */
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* -----------------------------------------------------RESULTS LIST CSS------------------------------------------------------ */
 .title {
     background-color: #2e5c2e;
@@ -166,14 +163,20 @@ h1 {
     border-radius: 15px;       /* rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* optional soft shadow */
 }
-
-
-.filters-container{
+.filters-container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #A8D08D; /* Green background */
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results-title{
+    color: #fff;
 }
 
 .recipe-container{
@@ -644,9 +647,9 @@ input[type="submit"]:hover {
 }
 
 .flash.warning {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
+    background-color: #fff;
+    color: #dd0101;
+    border: 1px solid #dd0101;
 }
 
 .flash.danger {
