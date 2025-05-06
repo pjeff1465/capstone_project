@@ -647,8 +647,8 @@ input[type="submit"]:hover {
 }
 
 .flash.warning {
-    background-color: #fff;
-    color: #dd0101;
+    background-color: #dd0101;
+    color: #fff;
     border: 1px solid #dd0101;
 }
 
