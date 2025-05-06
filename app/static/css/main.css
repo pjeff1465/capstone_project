@@ -585,7 +585,9 @@ input[type="submit"]:hover {
 /* -----------------------------------------------------USER CSS------------------------------------------------------ */
 
 .grocery-container{
-    width: 100%;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: #2e5c2e;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -599,12 +601,16 @@ input[type="submit"]:hover {
 .categories-container{
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .grocery-category {
     padding: 1rem;
     margin-bottom: 20px;
     min-width: 20%;
+    max-width: 25%;
+    background-color: #f8f9fa;
+    border-radius: 5px;
 }
 
 .grocery-category ul{
@@ -623,7 +629,7 @@ input[type="submit"]:hover {
 .grocery-category h3 {
     text-transform: capitalize;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #ed5bc6;
     padding-bottom: 5px;
 }
 
