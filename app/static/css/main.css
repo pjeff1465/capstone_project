@@ -14,6 +14,8 @@ h1 {
 
 .slider-container{
     margin-top: 0px;
+    position: relative;
+    z-index: 1;
 }
 
 .slider-container p{
@@ -153,6 +155,8 @@ h1 {
 /* Optional: make the dropdown items match */
 .choices__list--dropdown {
     background-color: #fff;
+    z-index: 3000 !important;
+    position: relative;
 }
 
 /* Optional: customize selected tags */
