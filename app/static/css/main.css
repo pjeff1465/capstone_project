@@ -507,6 +507,52 @@ h1 {
     margin-left: 4px;
 }
 
+.tag-box{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tag-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.separator {
+    width: 1px;
+    height: 3.5rem;
+    background-color: #ccc;
+}
+
+.note-container{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+p.note
+{
+     -moz-border-radius: 6px;
+     -webkit-border-radius: 6px;
+     background-color: #f8c8eb;
+     background-image: url(../Check-32.png);
+     background-position: 15px 7px;
+     background-repeat: no-repeat;
+     border: solid 2px #e875cf;
+     border-radius: 10px;
+     line-height: 18px;
+     overflow: hidden;
+     padding: 15px 60px;
+}
+
 .ingredient-box {
     background-color: white;
     padding: 20px;
@@ -578,6 +624,49 @@ h1 {
     background-color: #e436b5;
     color: white;
 }
+
+.health-tag-list-container{
+    background-color: white;
+    max-width: 80%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.health-tag-list-container h3{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.health-tag-list-container ol{
+    list-style: none;
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.health-tag-list-container li{
+    counter-increment: my-counter;
+    margin: 0.25rem;
+    padding: 0.5rem;
+}
+
+.health-tag-list-container li::before {
+    content: counter(my-counter);
+    background: #e436b5;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 2rem;
+    color: white;
+    text-align: center;
+    margin-right: 0.5rem;
+  }
 /* -----------------------------------------------------AUTHENTICATION CSS------------------------------------------------------ */
 
 .signup-body {

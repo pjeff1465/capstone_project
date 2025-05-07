@@ -77,6 +77,20 @@
             
         </div>
         
+        <div class="tag-box">
+            <div class="tag-section">
+                <p>Meal Type: {{ recipe.mealType | join(", ") }}</p>
+            </div>
+            <div class="separator"></div>
+            <div class="tag-section">
+                <p>Cuisine: {{ recipe.cuisineType | join(", ") }}</p>
+            </div>
+        </div>
+        
+        <div class="note-container">
+            <p class="note">Diet Labels: {{ recipe.dietLabels | join(", ") }}</p>
+        </div>
+        
         <div class="ingredient-box">
             <h2>Ingredients:</h2>
             <ul class="ingredient-list">
@@ -96,14 +110,16 @@
                 <button type="submit">Save to Profile</button>
             </form>
         </div>
-
-        <h3>Tags:</h3>
-        <p>Meal Type: {{ recipe.mealType | join(", ") }}</p>
-        <p>Cuisine: {{ recipe.cuisineType | join(", ") }}</p>
-        <p>Diet Labels: {{ recipe.dietLabels | join(", ") }}</p>
-        <p>Health Labels: {{ recipe.healthLabels | join(", ") }}</p>
-
-        <a href="{{ url_for('auth.dashboard') }}">Back to Dashboard</a>
+        
+        <h3>Other Tags:</h3>
+        <div class="health-tag-list-container">
+            <h3>Health Labels</h3>
+            <ol>
+                {% for label in recipe.healthLabels %}
+                    <li>{{label}}</li>
+                {% endfor %}
+            </ol>
+        </div>
     </div>
 </body>
 </html>
