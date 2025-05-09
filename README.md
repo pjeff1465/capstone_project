@@ -59,3 +59,11 @@ Tests are split into files mirroring the file structure of the application.
 To run any of the test files, ensure you are in the root directory and run the following: `pytest .\tests\<filename>`. For example: `pytest .\tests\test_api.py` which will run unit tests checking the functions which handle api requests. 
 
 NOTE: the file `test_api_integration.py` is integration tests for the api and makes real requests to external api. This does not use mocking and therefore rate limits apply.
+
+## 7.0 File Structure & Key Pages
+Main python code is found in routes.py and api_handler.py. HTML files are found in templates/. Most styling/css is found in static/. Other files are used for database or configuration / setup settings.
+
+- Dashboard: This page initially shows search bar, as well as filters required to generate personalized recipes, such as dietary restrictions, nutritional preferences, calories per serving, etc. Once the user chooses filters and makes a search they are redirected to results_list
+- Results List: After a user has made a search this page populates with a list of all generated results, with each recipe having a card with name, picture, and link to view more details, which redirects to recipe_details
+- Recipe Details: After selecting a recipe users will be brought to this page which shows all the detailed information about a recipe, including nutritional data (per serving & total), ingredients and other relevant tags. Here you can save a recipe to your user
+- Profile: This page can be accessed by saving a recipe or navigating to the Profile tab on the navbar. This page will show all saved recipes for your user, as well as automatically generate a grocery list based on the ingredients present in your saved recipes.
